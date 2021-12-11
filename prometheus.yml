@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 15s
+
+  external_labels:
+    monitor: "myprom-monitor"
+
+scrape_configs:
+  - job_name: "csvserver-monitor"
+    scrape_interval: 5s
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["52.91.164.117:9393"]
+
+  - job_name: 'prometheus'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['localhost:9090']
